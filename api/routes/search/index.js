@@ -2,8 +2,8 @@ const {searchAllCategories} = require("./search");
 
 exports.searchRoutes = [
   {
-    method: 'GET',
-    path: '/search/{nameToSearch}',
+    method: 'POST',
+    path: '/search/',
     handler: function (request, h) {
       return searchAllCategories(request);
     },

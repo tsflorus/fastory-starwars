@@ -3,6 +3,7 @@
 const Hapi = require('@hapi/hapi');
 const {apiRoutes} = require("./routes");
 const {users} = require("./mock/users");
+const {searchAllCategories} = require("./routes/search/search");
 
 const start = async () => {
 
@@ -26,9 +27,8 @@ const start = async () => {
       password: '$2a$12$wC0hVtJH9Wtub3yd3SyjIeAB6Uq5frhHXj1UahBCX492cnG1bMgn2',
       isSecure: false
     },
-    redirectTo: '/login',
     validate: async (request, session) => {
-
+      console.log(session.id)
       const account = users.find(
         (user) => (user.id === session.id)
       );
@@ -43,8 +43,20 @@ const start = async () => {
 
   server.auth.default('login');
 
-  server.route(apiRoutes);
-
+  server.route([
+    {
+      method: 'POST',
+      path: '/search/',
+      handler: function (request, h) {
+        return searchAllCategories(request);
+      },
+      options: {
+        auth: {
+          mode: 'try'
+        }
+      }
+    }
+  ]);
 
   await server.start();
   console.log('Server running on %s', server.info.uri);
