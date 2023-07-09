@@ -36,3 +36,16 @@ exports.searchAllCategories = async (request) => {
     starships
   };
 }
+
+exports.searchInCategory = async (request) => {
+  const {id} = request.params;
+  const {category} = request.payload
+
+  let result = await axios.get(`${apiBaseUrl}/${category}/${id}`);
+
+  if (!result) {
+    throw new Error(`No ${category} found`)
+  }
+
+  return result;
+}

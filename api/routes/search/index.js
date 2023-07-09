@@ -1,11 +1,23 @@
-const {searchAllCategories} = require("./search");
+const {searchAllCategories, searchInCategory} = require("./search");
 
 exports.searchRoutes = [
   {
-    method: 'POST',
+    method: 'GET',
     path: '/search/',
-    handler: function (request, h) {
+    handler: function (request) {
       return searchAllCategories(request);
+    },
+    options: {
+      auth: {
+        mode: 'required'
+      }
+    }
+  },
+  {
+    method: 'GET',
+    path: '/search/{id}',
+    handler: function (request) {
+      return searchInCategory(request);
     },
     options: {
       auth: {

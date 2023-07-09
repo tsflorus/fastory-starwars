@@ -3,7 +3,6 @@
 const Hapi = require('@hapi/hapi');
 const {apiRoutes} = require("./routes");
 const {users} = require("./mock/users");
-const {searchAllCategories} = require("./routes/search/search");
 
 const start = async () => {
 
@@ -43,20 +42,7 @@ const start = async () => {
 
   server.auth.default('login');
 
-  server.route([
-    {
-      method: 'POST',
-      path: '/search/',
-      handler: function (request, h) {
-        return searchAllCategories(request);
-      },
-      options: {
-        auth: {
-          mode: 'try'
-        }
-      }
-    }
-  ]);
+  server.route(apiRoutes);
 
   await server.start();
   console.log('Server running on %s', server.info.uri);
