@@ -1,7 +1,8 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
-const {login} = require("./routes/auth");
+const {apiRoutes} = require("./routes");
+const {users} = require("./mock/users");
 
 const start = async () => {
 
@@ -42,44 +43,7 @@ const start = async () => {
 
   server.auth.default('login');
 
-  server.route([
-    {
-      method: 'GET',
-      path: '/',
-      handler: function (request, h) {
-        return 'welcome';
-      },
-      options: {
-        auth: {
-          mode: 'required'
-        }
-      }
-    },
-    {
-      method: 'POST',
-      path: '/login',
-      handler: function (request, h) {
-        return login(request);
-      },
-      options: {
-        auth: {
-          mode: 'try'
-        }
-      }
-    },
-    {
-      method: 'GET',
-      path: '/logout',
-      handler: function (request, h) {
-        console.log('logging out');
-        request.cookieAuth.clear();
-        return {}
-      },
-      options: {
-        auth: false
-      }
-    }
-  ]);
+  server.route(apiRoutes);
 
 
   await server.start();
