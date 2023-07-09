@@ -2,7 +2,7 @@ const DashboardScreen = () => {
 
   return (
     <>
-      <h1>Dashboard</h1>
+      <h1 className="font-jedi-outlined">Dashboard</h1>
     </>
   )
 }

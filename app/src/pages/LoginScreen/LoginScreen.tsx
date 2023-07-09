@@ -27,6 +27,7 @@ const LoginScreen = () => {
   return (
     <>
       {error && <h2>{error}</h2>}
+      <h1 className="font-jedi-outlined">Login</h1>
       <form onSubmit={handleSubmit(submitForm)}>
         <div className='form-group'>
           <label htmlFor='username'>Username</label>

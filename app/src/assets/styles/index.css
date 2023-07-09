@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Star Jedi";
+  src: url("../fonts/star_jedi/starjedi/Starjedi.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "Star Jedi Outlined";
+  src: url("../fonts/star_jedi/starjedi/Starjhol.ttf") format("truetype")
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.font-jedi {
+  font-family: 'Star Jedi', sans-serif;
+}
+
+.font-jedi-outlined {
+  font-family: 'Star Jedi Outlined', sans-serif;
+}
+
+.text-yellow {
+  color: #FFE81F;
+}
+
+.bg-yellow {
+  background-color: #FFE81F;
+}
+
+.text-black {
+  color: #000000;
+}
+
+.bg-black {
+  background-color: #000000;
+}
