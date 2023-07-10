@@ -18,7 +18,7 @@ const ListSpecies = (props: Props) => {
 
   return (
     <div>
-      <Header title='Espèces' loading={props.loading} itemsLength={props.species?.length} color='chewy' />
+      <Header title='Espèces' loading={props.loading} itemsLength={props.species?.length} />
       {/*@ts-ignore*/}
       {props.species?.length ? props.species.map((species: Species, p: Key | null | undefined) => {
         return (

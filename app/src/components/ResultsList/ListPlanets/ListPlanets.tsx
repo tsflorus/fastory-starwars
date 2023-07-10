@@ -18,7 +18,7 @@ const ListPlanets = (props: Props) => {
 
   return (
     <div>
-      <Header title='Planètes' loading={props.loading} itemsLength={props.planets?.length} color='gold' />
+      <Header title='Planètes' loading={props.loading} itemsLength={props.planets?.length} />
       {/*@ts-ignore*/}
       {props.planets?.length ? props.planets.map((planet: Planet, p: Key | null | undefined) => {
         return (

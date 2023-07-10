@@ -18,7 +18,7 @@ const ListStarships = (props: Props) => {
 
   return (
     <div>
-      <Header title='Vaisseaux' loading={props.loading} itemsLength={props.starships?.length} color='rebel-red' />
+      <Header title='Vaisseaux' loading={props.loading} itemsLength={props.starships?.length} />
       {/*@ts-ignore*/}
       {props.starships?.length ? props.starships.map((starship: Starship, p: Key | null | undefined) => {
         return (

@@ -18,7 +18,7 @@ const ListFilms = (props: Props) => {
 
   return (
     <div>
-      <Header title='Films' loading={props.loading} itemsLength={props.films?.length} color='warp-speed' />
+      <Header title='Films' loading={props.loading} itemsLength={props.films?.length} />
       {/*@ts-ignore*/}
       {props.films?.length ? props.films.map((film: Film, p: Key | null | undefined) => {
         return (
