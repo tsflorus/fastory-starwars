@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 const DashboardScreen = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>('');
+  const [filter, setFilter] = useState<string>('');
   const {loading, searchResult, error} = useSelector(
     // @ts-ignore
     (state) => state.search
@@ -31,8 +32,11 @@ const DashboardScreen = () => {
   }, [searchValue, 500]);
 
   useEffect(() => {
-    // @ts-ignore
-    dispatch(searchName({nameToSearch: debouncedSearchValue}))
+    // TODO: handle filters
+    if (debouncedSearchValue.length > 0) {
+      // @ts-ignore
+      dispatch(searchName({nameToSearch: debouncedSearchValue, filter: filter.length ? filter : null}))
+    }
   }, [debouncedSearchValue])
 
   return (
@@ -48,6 +52,16 @@ const DashboardScreen = () => {
             onChange={handleInputChange}
             required
           />
+          <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Filtres</label>
+          <select id="countries" className="bg-black border-2 border-yellow" value={filter} onChange={(e) => setFilter(e.target.value)}>
+            <option value="">All</option>
+            <option value="people">People</option>
+            <option value="planets">Planets</option>
+            <option value="films">Films</option>
+            <option value="species">Species</option>
+            <option value="vehicles">Vehicles</option>
+            <option value="starships">Starships</option>
+          </select>
         </div>
       {loading && <p>Loading</p>}
 
