@@ -3,19 +3,26 @@ import {FieldValues, useForm} from "react-hook-form";
 import {searchName} from "../../actions/searchActions";
 import {Film, Person, Planet, Species, Starship, Vehicle} from "../../../data/types";
 import { Key } from "react";
+import {useNavigate} from "react-router-dom";
+import {routes} from "../../constants/routes";
 
 const DashboardScreen = () => {
   const {loading, searchResult, error} = useSelector(
     // @ts-ignore
     (state) => state.search
-  )
-
-  const dispatch = useDispatch()
-  const {register, handleSubmit} = useForm()
+  );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {register, handleSubmit} = useForm();
 
   const submitForm = (data: FieldValues) => {
     // @ts-ignore
     dispatch(searchName(data))
+  }
+
+  const goToPage = async (url: string, category: string) => {
+    let id = url.split('/')[5];
+    await navigate(`/${category}/${id}`)
   }
 
   return (
@@ -43,7 +50,7 @@ const DashboardScreen = () => {
             <h1>People</h1>
             {searchResult.people?.length && searchResult.people.map((person: Person, p: Key | null | undefined) => {
               return (
-                <div key={p} style={{border: '1px solid black'}}>
+                <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(person.url, 'people')}>
                   <p>{person.name}</p>
                   <p>{person.height}</p>
                   <p>{person.mass}</p>
@@ -56,7 +63,7 @@ const DashboardScreen = () => {
             <h1>Planets</h1>
             {searchResult.planets?.length && searchResult.planets.map((planet: Planet, p: Key | null | undefined) => {
               return (
-                <div key={p} style={{border: '1px solid black'}}>
+                <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(planet.url, 'planets')}>
                   <p>{planet.name}</p>
                   <p>{planet.climate}</p>
                   <p>{planet.terrain}</p>
@@ -69,7 +76,7 @@ const DashboardScreen = () => {
             <h1>Films</h1>
             {searchResult.films?.length && searchResult.films.map((film: Film, p: Key | null | undefined) => {
               return (
-                <div key={p} style={{border: '1px solid black'}}>
+                <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(film.url, 'films')}>
                   <p>{film.title}</p>
                   <p>{film.director}</p>
                   <p>{film.producer}</p>
@@ -81,7 +88,7 @@ const DashboardScreen = () => {
             <h1>Species</h1>
             {searchResult.species?.length && searchResult.species.map((specie: Species, p: Key | null | undefined) => {
               return (
-                <div key={p} style={{border: '1px solid black'}}>
+                <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(specie.url, 'species')}>
                   <p>{specie.name}</p>
                   <p>{specie.language}</p>
                   <p>{specie.classification}</p>
@@ -93,7 +100,7 @@ const DashboardScreen = () => {
             <h1>Vehicles</h1>
             {searchResult.vehicles?.length && searchResult.vehicles.map((vehicle: Vehicle, p: Key | null | undefined) => {
               return (
-                <div key={p} style={{border: '1px solid black'}}>
+                <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(vehicle.url, 'vehicles')}>
                   <p>{vehicle.name}</p>
                   <p>{vehicle.vehicle_class}</p>
                   <p>{vehicle.model}</p>
@@ -105,7 +112,7 @@ const DashboardScreen = () => {
             <h1>Starships</h1>
             {searchResult.starships?.length && searchResult.starships.map((starship: Starship, p: Key | null | undefined) => {
               return (
-                <div key={p} style={{border: '1px solid black'}}>
+                <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(starship.url, 'starships')}>
                   <p>{starship.name}</p>
                   <p>{starship.manufacturer}</p>
                   <p>{starship.model}</p>

@@ -31,9 +31,9 @@ export const searchName = createAsyncThunk(
   }
 );
 
-export const searchByCategory = createAsyncThunk(
-  'search/byCategory',
-  async ({ nameToSearch, category }: {nameToSearch: string, category: string}, { rejectWithValue }) => {
+export const searchInCategory = createAsyncThunk(
+  'search/inCategory',
+  async ({ id, category }: {id: string, category: string}, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON
       const config = {
@@ -42,7 +42,7 @@ export const searchByCategory = createAsyncThunk(
         },
       }
       const { data } = await axios.post(
-        `${API_BASE_URL}/search/${nameToSearch}`,
+        `${API_BASE_URL}/search/${id}`,
         {category},
         config
       )

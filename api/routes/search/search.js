@@ -41,11 +41,11 @@ exports.searchInCategory = async (request) => {
   const {id} = request.params;
   const {category} = request.payload
 
-  let result = await axios.get(`${apiBaseUrl}/${category}/${id}`);
+  let result = await axios.get(`${apiBaseUrl}${category}/${id}`);
 
   if (!result) {
-    throw new Error(`No ${category} found`)
+    throw new Error(`Item with id ${id} cannot be found in ${category}`)
   }
 
-  return result;
+  return result.data;
 }

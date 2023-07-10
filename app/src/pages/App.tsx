@@ -4,6 +4,7 @@ import {routes} from "../constants/routes";
 import {LoginScreen} from "./LoginScreen";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import {DashboardScreen} from "./DashboardScreen";
+import {PeopleDetailsScreen} from "./PeopleDetailsScreen";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path={routes.dashboard} element={<ProtectedRoute><DashboardScreen /></ProtectedRoute>} />
         <Route path={routes.login} element={<LoginScreen />} />
+        <Route path={routes.peopleDetails} element={<ProtectedRoute><PeopleDetailsScreen /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

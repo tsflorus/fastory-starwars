@@ -1,9 +1,11 @@
 type Routes = {
   dashboard: string
   login: string
+  peopleDetails: string
 };
 
 export const routes: Routes = {
   dashboard: '/',
-  login: '/login'
+  login: '/login',
+  peopleDetails: '/people/:id'
 };
