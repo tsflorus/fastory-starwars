@@ -1,7 +1,6 @@
 import {Species} from "../../../../data/types";
 import {Key} from "react";
 import {useNavigate} from "react-router-dom";
-import {DotSpinner} from "../../DotSpinner";
 import {Header} from "../Header";
 
 type Props = {
