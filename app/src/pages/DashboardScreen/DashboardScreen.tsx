@@ -1,50 +1,56 @@
 import {useDispatch, useSelector} from "react-redux";
-import {FieldValues, useForm} from "react-hook-form";
 import {searchName} from "../../actions/searchActions";
 import {Film, Person, Planet, Species, Starship, Vehicle} from "../../../data/types";
-import { Key } from "react";
+import {Key, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {routes} from "../../constants/routes";
 
 const DashboardScreen = () => {
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>('');
   const {loading, searchResult, error} = useSelector(
     // @ts-ignore
     (state) => state.search
   );
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {register, handleSubmit} = useForm();
-
-  const submitForm = (data: FieldValues) => {
-    // @ts-ignore
-    dispatch(searchName(data))
-  }
 
   const goToPage = async (url: string, category: string) => {
     let id = url.split('/')[5];
     await navigate(`/${category}/${id}`)
   }
 
+  const handleInputChange = (event: { target: { value: string; }; }) => {
+    setSearchValue(event.target.value);
+  };
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchValue(searchValue);
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [searchValue, 500]);
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(searchName({nameToSearch: debouncedSearchValue}))
+  }, [debouncedSearchValue])
+
   return (
     <>
       {error && <h2>{error}</h2>}
       <h1 className="font-jedi-outlined">Search</h1>
-      <form onSubmit={handleSubmit(submitForm)}>
         <div className='form-group'>
           <label htmlFor='nameToSearch'>Name to search</label>
           <input
             type='nameToSearch'
             className="bg-black border-2 border-yellow"
-            {...register('nameToSearch')}
+            value={searchValue}
+            onChange={handleInputChange}
             required
           />
         </div>
-        <button type='submit' className='button'>
-          Search
-        </button>
-      </form>
+      {loading && <p>Loading</p>}
 
-      {!loading && searchResult && (
         <div style={{marginLeft: '5vw', marginRight: '5vw'}}>
           <div>
             <h1>People</h1>
@@ -122,9 +128,6 @@ const DashboardScreen = () => {
             })}
           </div>
         </div>
-      )}
-
-      {loading && <h1>Loading</h1>}
     </>
   )
 }
