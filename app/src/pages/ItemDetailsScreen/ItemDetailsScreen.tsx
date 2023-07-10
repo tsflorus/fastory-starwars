@@ -2,8 +2,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {searchInCategory} from "../../actions/searchActions";
 import {useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {PeopleDetailsCard} from "../../components/PeopleDetailsCard";
 
-const PeopleDetailsScreen = () => {
+type Props = {
+  category: string
+}
+
+const ItemDetailsScreen = (props: Props) => {
   const {loading, itemDetails, error} = useSelector(
     // @ts-ignore
     (state) => state.search
@@ -11,26 +16,25 @@ const PeopleDetailsScreen = () => {
   const {id} = useParams();
   const dispatch = useDispatch()
 
-
-  const getData = (category: string) => {
-    const data = {id, category};
+  const getData = () => {
+    const data = {id, category: props.category};
     // @ts-ignore
     dispatch(searchInCategory(data))
   }
 
   useEffect(() => {
-    getData('people');
+    getData();
   }, [])
 
   return (
     <>
       {error && <h2>{error}</h2>}
-      <h1 className="font-jedi-outlined">People details</h1>
+      <h1 className="font-jedi-outlined">{props.category} details</h1>
 
-      {JSON.stringify(itemDetails)}
+      {props.category === 'people' && itemDetails && <PeopleDetailsCard person={itemDetails} />}
 
       {loading && <h1>Loading</h1>}
     </>
   )
 }
-export default PeopleDetailsScreen
+export default ItemDetailsScreen
