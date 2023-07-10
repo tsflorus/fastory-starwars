@@ -94,5 +94,14 @@ exports.searchItem = async (request) => {
     });
   }
 
+  if (category === 'vehicles') {
+    await forEachAsync(result.pilots, async (pilotUrl, index) => {
+      result.pilots[index] = (await axios.get(pilotUrl)).data;
+    });
+    await forEachAsync(result.films, async (filmUrl, index) => {
+      result.films[index] = (await axios.get(filmUrl)).data;
+    });
+  }
+
   return result;
 }

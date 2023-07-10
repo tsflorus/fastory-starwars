@@ -12,8 +12,8 @@ const PlanetDetailsCard = (props) => {
     <div className="my-20">
       {props.planet && (
         <>
-          <h1 className="text-8xl font-starJediOutlined text-yellow text-center">{props.planet?.name}</h1>
-          <div className="w-8/12 mx-auto mt-10 bg-[#010101] border-yellow border-2 rounded-2xl p-5">
+          <h1 className="text-8xl font-starJediOutlined text-gold text-center">{props.planet?.name}</h1>
+          <div className="w-8/12 mx-auto mt-10 bg-[#010101] border-gold border-2 rounded-2xl p-5">
             <div className="mb-5">
               <h1 className="text-2xl font-starJediOutlined">informations de base</h1>
               <div className="flex flex-row flex-wrap items-center justify-between">
@@ -38,7 +38,7 @@ const PlanetDetailsCard = (props) => {
               <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
                 {props.planet?.residents?.map((resident: Person, p: Key | null | undefined) => {
                   return (
-                    <div key={p} className="hover:cursor-pointer border-2 border-white p-2 rounded-2xl"
+                    <div key={p} className="hover:cursor-pointer border-2 border-tattooine p-2 rounded-2xl"
                          onClick={() => navigate(`/people/${resident?.url.split('/')[5]}`)}>
                       <p className="font-starJedi">Nom: {resident.name.toLowerCase()}</p>
                       <p className="font-starJedi">Genre: {resident.gender}</p>
@@ -54,7 +54,7 @@ const PlanetDetailsCard = (props) => {
               <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
                 {props.planet?.films?.map((film: Film, v: Key | null | undefined) => {
                   return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-white p-2 rounded-2xl"
+                    <div key={v} className="hover:cursor-pointer border-2 border-warp-speed p-2 rounded-2xl"
                          onClick={() => navigate(`/films/${film?.url.split('/')[5]}`)}>
                       <p className="font-starJedi">Nom: {film.title}</p>
                       <p className="font-starJedi">N°: {film.episode_id}</p>
