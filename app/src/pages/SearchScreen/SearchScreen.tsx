@@ -4,7 +4,7 @@ import {Film, Person, Planet, Species, Starship, Vehicle} from "../../../data/ty
 import {Key, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-const DashboardScreen = () => {
+const SearchScreen = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>('');
   const [filter, setFilter] = useState<string>('');
@@ -145,4 +145,4 @@ const DashboardScreen = () => {
     </>
   )
 }
-export default DashboardScreen
+export default SearchScreen

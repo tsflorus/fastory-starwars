@@ -22,7 +22,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     // redirect user to the main page
-    if (success && userInfo) navigate(routes.dashboard)
+    if (success && userInfo) navigate(routes.search)
   }, [navigate, userInfo, success])
 
   return (
