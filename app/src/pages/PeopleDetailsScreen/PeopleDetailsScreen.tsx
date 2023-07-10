@@ -1,8 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
-import {FieldValues, useForm} from "react-hook-form";
-import {searchInCategory, searchName} from "../../actions/searchActions";
-import {Film, Person, Planet, Species, Starship, Vehicle} from "../../../data/types";
-import {Key, useEffect} from "react";
+import {searchInCategory} from "../../actions/searchActions";
+import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 
 const PeopleDetailsScreen = () => {
