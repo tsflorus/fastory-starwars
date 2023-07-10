@@ -3,6 +3,7 @@ import {searchInCategory} from "../../actions/searchActions";
 import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {PeopleDetailsCard} from "../../components/PeopleDetailsCard";
+import {PlanetDetailsCard} from "../../components/PlanetDetailsCard";
 
 type Props = {
   category: string
@@ -32,6 +33,7 @@ const ItemDetailsScreen = (props: Props) => {
       <h1 className="font-jedi-outlined">{props.category} details</h1>
 
       {props.category === 'people' && itemDetails && <PeopleDetailsCard person={itemDetails} />}
+      {props.category === 'planets' && itemDetails && <PlanetDetailsCard planet={itemDetails} />}
 
       {loading && <h1>Loading</h1>}
     </>
