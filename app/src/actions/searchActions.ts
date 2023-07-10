@@ -31,8 +31,8 @@ export const searchName = createAsyncThunk(
   }
 );
 
-export const searchInCategory = createAsyncThunk(
-  'search/inCategory',
+export const searchItem = createAsyncThunk(
+  'search/item',
   async ({ id, category }: {id: string, category: string}, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON

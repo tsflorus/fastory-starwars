@@ -1,11 +1,11 @@
-const {searchAllCategories, searchInCategory} = require("./search");
+const {searchByName, searchItem} = require("./search");
 
 exports.searchRoutes = [
   {
     method: 'GET',
     path: '/search/{nameToSearch}/{category?}',
     handler: function (request) {
-      return searchAllCategories(request);
+      return searchByName(request);
     },
     options: {
       auth: {
@@ -17,7 +17,7 @@ exports.searchRoutes = [
     method: 'POST',
     path: '/search/{id}',
     handler: function (request) {
-      return searchInCategory(request);
+      return searchItem(request);
     },
     options: {
       auth: {

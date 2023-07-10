@@ -1,7 +1,7 @@
 const {apiBaseUrl} = require("../../constants/config");
 const axios = require("axios");
 
-exports.searchAllCategories = async (request) => {
+exports.searchByName = async (request) => {
   const {nameToSearch, category} = request.params;
 
   let data = {
@@ -60,7 +60,7 @@ exports.searchAllCategories = async (request) => {
   return data;
 }
 
-exports.searchInCategory = async (request) => {
+exports.searchItem = async (request) => {
   const {id} = request.params;
   const {category} = request.payload
 

@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {searchInCategory, searchName} from "../actions/searchActions";
+import {searchItem, searchName} from "../actions/searchActions";
 
 const initialState = {
   loading: false,
@@ -31,18 +31,18 @@ const searchSlice = createSlice({
       state.error = payload
     },
     // @ts-ignore
-    [searchInCategory.pending]: (state: { loading: boolean; error: null; }) => {
+    [searchItem.pending]: (state: { loading: boolean; error: null; }) => {
       state.loading = true
       state.error = null
     },
     // @ts-ignore
-    [searchInCategory.fulfilled]: (state: { loading: boolean; success: boolean; itemDetails: {} }, {payload}: any) => {
+    [searchItem.fulfilled]: (state: { loading: boolean; success: boolean; itemDetails: {} }, {payload}: any) => {
       state.loading = false
       state.success = true
       state.itemDetails = payload
     },
     // @ts-ignore
-    [searchInCategory.rejected]: (state: { loading: boolean; error: any; }, {payload}: any) => {
+    [searchItem.rejected]: (state: { loading: boolean; error: any; }, {payload}: any) => {
       state.loading = false
       state.error = payload
     },
