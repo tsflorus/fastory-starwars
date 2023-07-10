@@ -11,7 +11,6 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
-      'blue': '#1fb6ff',
       'purple': '#7e5bef',
       'pink': '#ff49db',
       'orange': '#ff7849',
@@ -20,7 +19,14 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
-      'black': '#000000'
+      'black': '#000000',
+      'tattooine': 'rgb(82,59,88)',
+      'warp-speed': 'rgb(84,167,217)',
+      'gold': 'rgb(160,122,61)',
+      'blue': 'rgb(42,49,130)',
+      'chewy': 'rgb(118,75,40)',
+      'luke-lightsaber': 'rgb(53,194,222)',
+      'rebel-red': 'rgb(195,31,38)'
     },
     fontFamily: {
       starJedi: ['Star Jedi', 'sans-serif'],

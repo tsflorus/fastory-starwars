@@ -5,6 +5,7 @@ import {Key, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import human from '../../assets/img/human.png'
 import wookie from '../../assets/img/wookie.png'
+import {ResultsList} from "../../components/ResultsList";
 
 const SearchScreen = () => {
   const [searchValue, setSearchValue] = useState<string>('');
@@ -15,13 +16,7 @@ const SearchScreen = () => {
     // @ts-ignore
     (state) => state.search
   );
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const goToPage = async (url: string, category: string) => {
-    let id = url.split('/')[5];
-    await navigate(`/${category}/${id}`)
-  }
 
   const handleInputChange = (event: { target: { value: string; }; }) => {
     setSearchValue(event.target.value);
@@ -72,85 +67,8 @@ const SearchScreen = () => {
           {language === 'wookie' && <img src={wookie} style={{height: 50, width: 50}} className="hover:cursor-pointer" alt='' onClick={() => setLanguage('human')}/>}
         </div>
       </div>
-      {loading && <p>Loading</p>}
 
-      <div style={{marginLeft: '5vw', marginRight: '5vw'}}>
-        <div>
-          <h1>People</h1>
-          {searchResult.people?.length && searchResult.people.map((person: Person, p: Key | null | undefined) => {
-            return (
-              <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(person.url, 'people')}>
-                <p>{person.name}</p>
-                <p>{person.height}</p>
-                <p>{person.mass}</p>
-                <p>{person.birth_year}</p>
-              </div>
-            )
-          })}
-        </div>
-        <div>
-          <h1>Planets</h1>
-          {searchResult.planets?.length && searchResult.planets.map((planet: Planet, p: Key | null | undefined) => {
-            return (
-              <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(planet.url, 'planets')}>
-                <p>{planet.name}</p>
-                <p>{planet.climate}</p>
-                <p>{planet.terrain}</p>
-                <p>{planet.population}</p>
-              </div>
-            )
-          })}
-        </div>
-        <div>
-          <h1>Films</h1>
-          {searchResult.films?.length && searchResult.films.map((film: Film, p: Key | null | undefined) => {
-            return (
-              <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(film.url, 'films')}>
-                <p>{film.title}</p>
-                <p>{film.director}</p>
-                <p>{film.producer}</p>
-              </div>
-            )
-          })}
-        </div>
-        <div>
-          <h1>Species</h1>
-          {searchResult.species?.length && searchResult.species.map((specie: Species, p: Key | null | undefined) => {
-            return (
-              <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(specie.url, 'species')}>
-                <p>{specie.name}</p>
-                <p>{specie.language}</p>
-                <p>{specie.classification}</p>
-              </div>
-            )
-          })}
-        </div>
-        <div>
-          <h1>Vehicles</h1>
-          {searchResult.vehicles?.length && searchResult.vehicles.map((vehicle: Vehicle, p: Key | null | undefined) => {
-            return (
-              <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(vehicle.url, 'vehicles')}>
-                <p>{vehicle.name}</p>
-                <p>{vehicle.vehicle_class}</p>
-                <p>{vehicle.model}</p>
-              </div>
-            )
-          })}
-        </div>
-        <div>
-          <h1>Starships</h1>
-          {searchResult.starships?.length && searchResult.starships.map((starship: Starship, p: Key | null | undefined) => {
-            return (
-              <div key={p} style={{border: '1px solid black'}} onClick={() => goToPage(starship.url, 'starships')}>
-                <p>{starship.name}</p>
-                <p>{starship.manufacturer}</p>
-                <p>{starship.model}</p>
-                <p>{starship.passengers}</p>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+      <ResultsList results={searchResult} loading={loading} />
     </div>
   )
 }
