@@ -31,7 +31,7 @@ const LoginScreen = () => {
       <h1 className="text-5xl font-jedi-outlined mb-10 text-yellow">Base de données de l'empire</h1>
       <form className="flex flex-col justify-center w-3/12" onSubmit={handleSubmit(submitForm)}>
           <input
-            placeholder='username'
+            placeholder="Nom d'utilisation"
             type='username'
             className='border-white bg-black p-2 font-starJedi rounded'
             style={{borderWidth: 1}}
@@ -40,7 +40,7 @@ const LoginScreen = () => {
           />
 
           <input
-            placeholder='password'
+            placeholder='Mot de passe'
             type='password'
             className='border-white bg-black p-2 font-starJedi rounded mt-5'
             style={{borderWidth: 1}}

@@ -4,7 +4,7 @@ import {API_BASE_URL} from "../constants/config";
 
 export const searchName = createAsyncThunk(
   'search/name',
-  async ({ nameToSearch }: {nameToSearch: string}, { rejectWithValue }) => {
+  async ({ nameToSearch, filter }: {nameToSearch: string, filter: string}, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON
       const config = {
@@ -12,8 +12,12 @@ export const searchName = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       }
+      let url = `${API_BASE_URL}/search/${nameToSearch}`
+      if (filter) {
+        url = url.concat(`/${filter}`)
+      }
       const { data } = await axios.get(
-        `${API_BASE_URL}/search/${nameToSearch}`,
+        url,
         config
       )
       return data
@@ -31,8 +35,8 @@ export const searchName = createAsyncThunk(
   }
 );
 
-export const searchInCategory = createAsyncThunk(
-  'search/inCategory',
+export const searchItem = createAsyncThunk(
+  'search/item',
   async ({ id, category }: {id: string, category: string}, { rejectWithValue }) => {
     try {
       // configure header's Content-Type as JSON

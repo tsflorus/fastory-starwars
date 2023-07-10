@@ -25,15 +25,14 @@ const SearchScreen = () => {
       setDebouncedSearchValue(searchValue);
     }, 500);
     return () => clearTimeout(timeoutId);
-  }, [searchValue, 500]);
+  }, [searchValue, filter, 500]);
 
   useEffect(() => {
-    // TODO: handle filters
     if (debouncedSearchValue.length > 0) {
       // @ts-ignore
       dispatch(searchName({nameToSearch: debouncedSearchValue, filter: filter.length ? filter : null}))
     }
-  }, [debouncedSearchValue])
+  }, [debouncedSearchValue, filter])
 
   return (
     <div className="flex flex-col justify-center items-center mt-20 w-8/12 mx-auto">

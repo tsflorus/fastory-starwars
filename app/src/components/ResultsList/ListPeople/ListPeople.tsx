@@ -18,7 +18,7 @@ const ListPeople = (props: Props) => {
 
   return (
     <div>
-      <Header title='Personnages' loading={props.loading} itemsLength={props.people?.length} color='tattooine' />
+      <Header title='Personnages' loading={props.loading} itemsLength={props.people?.length} />
       {/*@ts-ignore*/}
       {props.people?.length ? props.people.map((person: Person, p: Key | null | undefined) => {
         return (

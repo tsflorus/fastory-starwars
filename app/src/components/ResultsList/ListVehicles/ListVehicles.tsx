@@ -18,7 +18,7 @@ const ListVehicles = (props: Props) => {
 
   return (
     <div>
-      <Header title='Véhicules' loading={props.loading} itemsLength={props.vehicles?.length} color='luke-lightsaber' />
+      <Header title='Véhicules' loading={props.loading} itemsLength={props.vehicles?.length} />
       {/*@ts-ignore*/}
       {props.vehicles?.length ? props.vehicles.map((vehicle: Vehicle, p: Key | null | undefined) => {
         return (

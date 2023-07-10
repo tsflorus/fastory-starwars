@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {searchInCategory} from "../../actions/searchActions";
+import {searchItem} from "../../actions/searchActions";
 import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {PeopleDetailsCard} from "../../components/PeopleDetailsCard";
@@ -25,7 +25,7 @@ const ItemDetailsScreen = (props: Props) => {
   const getData = () => {
     const data = {id, category: props.category};
     // @ts-ignore
-    dispatch(searchInCategory(data))
+    dispatch(searchItem(data))
   }
 
   useEffect(() => {
