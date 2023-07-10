@@ -9,6 +9,7 @@ import {SpeciesDetailsCard} from "../../components/SpeciesDetailsCard";
 import {VehicleDetailsCard} from "../../components/VehicleDetailsCard";
 import {StarshipDetailsCard} from "../../components/StarshipDetailsCard";
 import {Loader} from "../../components/Loader";
+import {logoutUser} from "../../actions/authActions";
 
 type Props = {
   category: string
@@ -36,14 +37,22 @@ const ItemDetailsScreen = (props: Props) => {
   return (
     <>
       {error && <h2>{error}</h2>}
-      {props.category === 'people' && !loading && itemDetails && <PeopleDetailsCard person={itemDetails} />}
-      {props.category === 'planets' && !loading && itemDetails && <PlanetDetailsCard planet={itemDetails} />}
-      {props.category === 'films' && !loading && itemDetails && <FilmDetailsCard film={itemDetails} />}
-      {props.category === 'species' && !loading && itemDetails && <SpeciesDetailsCard species={itemDetails} />}
-      {props.category === 'vehicles' && !loading && itemDetails && <VehicleDetailsCard vehicle={itemDetails} />}
-      {props.category === 'starships' && !loading && itemDetails && <StarshipDetailsCard starship={itemDetails} />}
+      {props.category === 'people' && !loading && itemDetails && <PeopleDetailsCard person={itemDetails}/>}
+      {props.category === 'planets' && !loading && itemDetails && <PlanetDetailsCard planet={itemDetails}/>}
+      {props.category === 'films' && !loading && itemDetails && <FilmDetailsCard film={itemDetails}/>}
+      {props.category === 'species' && !loading && itemDetails && <SpeciesDetailsCard species={itemDetails}/>}
+      {props.category === 'vehicles' && !loading && itemDetails && <VehicleDetailsCard vehicle={itemDetails}/>}
+      {props.category === 'starships' && !loading && itemDetails && <StarshipDetailsCard starship={itemDetails}/>}
 
-      {loading && <Loader />}
+      {loading && <Loader/>}
+
+      <div className="flex flex-row justify-center">
+        <button className='button border-2 border-yellow mt-20 w-1/12 rounded mx-auto font-jedi text-yellow p-2'
+          // @ts-ignore
+                onClick={() => dispatch(logoutUser({}))}>
+          M'enfuir
+        </button>
+      </div>
     </>
   )
 }

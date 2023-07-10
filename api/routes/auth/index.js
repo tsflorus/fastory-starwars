@@ -17,7 +17,6 @@ exports.authRoutes = [
     method: 'GET',
     path: '/logout',
     handler: function (request, h) {
-      console.log('logging out');
       request.cookieAuth.clear();
       return {}
     },
