@@ -30,24 +30,24 @@ const LoginScreen = () => {
       <h1 className="font-jedi-outlined">Login</h1>
       <form onSubmit={handleSubmit(submitForm)}>
         <div className='form-group'>
-          <label htmlFor='username'>Username</label>
+          <label htmlFor='username' className="text-yellow font-jedi-outlined">Username</label>
           <input
             type='username'
-            className='form-input'
+            className='border-2 border-yellow bg-black'
             {...register('username')}
             required
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password' className="text-yellow font-jedi-outlined">Password</label>
           <input
             type='password'
-            className='form-input'
+            className='border-2 border-yellow bg-black'
             {...register('password')}
             required
           />
         </div>
-        <button type='submit' className='button'>
+        <button type='submit' className='button border-2 border-yellow'>
           Login
         </button>
       </form>

@@ -27,7 +27,7 @@ const DashboardScreen = () => {
           <label htmlFor='nameToSearch'>Name to search</label>
           <input
             type='nameToSearch'
-            className='form-input'
+            className="bg-black border-2 border-yellow"
             {...register('nameToSearch')}
             required
           />
