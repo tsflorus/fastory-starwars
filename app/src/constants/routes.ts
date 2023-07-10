@@ -1,5 +1,5 @@
 type Routes = {
-  dashboard: string
+  search: string
   login: string
   peopleDetails: string
   planetDetails: string
@@ -10,7 +10,7 @@ type Routes = {
 };
 
 export const routes: Routes = {
-  dashboard: '/',
+  search: '/',
   login: '/login',
   peopleDetails: '/people/:id',
   planetDetails: '/planets/:id',
