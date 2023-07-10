@@ -4,6 +4,7 @@ import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {PeopleDetailsCard} from "../../components/PeopleDetailsCard";
 import {PlanetDetailsCard} from "../../components/PlanetDetailsCard";
+import {FilmDetailsCard} from "../../components/FilmDetailsCard";
 
 type Props = {
   category: string
@@ -34,6 +35,7 @@ const ItemDetailsScreen = (props: Props) => {
 
       {props.category === 'people' && itemDetails && <PeopleDetailsCard person={itemDetails} />}
       {props.category === 'planets' && itemDetails && <PlanetDetailsCard planet={itemDetails} />}
+      {props.category === 'films' && itemDetails && <FilmDetailsCard film={itemDetails} />}
 
       {loading && <h1>Loading</h1>}
     </>

@@ -16,6 +16,7 @@ function App() {
         {/*Details routes*/}
         <Route path={routes.peopleDetails} element={<ProtectedRoute><ItemDetailsScreen category='people' /></ProtectedRoute>} />
         <Route path={routes.planetDetails} element={<ProtectedRoute><ItemDetailsScreen category='planets' /></ProtectedRoute>} />
+        <Route path={routes.filmDetails} element={<ProtectedRoute><ItemDetailsScreen category='films' /></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );
