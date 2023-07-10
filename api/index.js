@@ -1,7 +1,8 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
-const {login} = require("./routes/auth");
+const {apiRoutes} = require("./routes");
+const {users} = require("./mock/users");
 
 const start = async () => {
 
@@ -25,9 +26,8 @@ const start = async () => {
       password: '$2a$12$wC0hVtJH9Wtub3yd3SyjIeAB6Uq5frhHXj1UahBCX492cnG1bMgn2',
       isSecure: false
     },
-    redirectTo: '/login',
     validate: async (request, session) => {
-
+      console.log(session.id)
       const account = users.find(
         (user) => (user.id === session.id)
       );
@@ -42,45 +42,7 @@ const start = async () => {
 
   server.auth.default('login');
 
-  server.route([
-    {
-      method: 'GET',
-      path: '/',
-      handler: function (request, h) {
-        return 'welcome';
-      },
-      options: {
-        auth: {
-          mode: 'required'
-        }
-      }
-    },
-    {
-      method: 'POST',
-      path: '/login',
-      handler: function (request, h) {
-        return login(request);
-      },
-      options: {
-        auth: {
-          mode: 'try'
-        }
-      }
-    },
-    {
-      method: 'GET',
-      path: '/logout',
-      handler: function (request, h) {
-        console.log('logging out');
-        request.cookieAuth.clear();
-        return {}
-      },
-      options: {
-        auth: false
-      }
-    }
-  ]);
-
+  server.route(apiRoutes);
 
   await server.start();
   console.log('Server running on %s', server.info.uri);
