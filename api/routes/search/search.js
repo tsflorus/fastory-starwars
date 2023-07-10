@@ -103,5 +103,15 @@ exports.searchItem = async (request) => {
     });
   }
 
+  if (category === 'species') {
+    result.homeworld = (await axios.get(result.homeworld)).data
+    await forEachAsync(result.people, async (personUrl, index) => {
+      result.people[index] = (await axios.get(personUrl)).data;
+    });
+    await forEachAsync(result.films, async (filmUrl, index) => {
+      result.films[index] = (await axios.get(filmUrl)).data;
+    });
+  }
+
   return result;
 }
