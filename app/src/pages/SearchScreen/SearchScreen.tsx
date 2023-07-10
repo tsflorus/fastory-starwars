@@ -9,7 +9,6 @@ const SearchScreen = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState<string>('');
   const [filter, setFilter] = useState<string>('');
-  const [language, setLanguage] = useState<string>('human');
   const {loading, searchResult, error} = useSelector(
     // @ts-ignore
     (state) => state.search
@@ -58,11 +57,7 @@ const SearchScreen = () => {
           <option value="vehicles">Véhicules</option>
           <option value="starships">Vaisseaux</option>
         </select>
-
-        <div className="w-1/12 flex flex-row justify-center items-center" style={{height: 50}}>
-          {language === 'human' && <img src={human} style={{height: 50, width: 75}} className="hover:cursor-pointer" alt='' onClick={() => setLanguage('wookie')}/>}
-          {language === 'wookie' && <img src={wookie} style={{height: 50, width: 50}} className="hover:cursor-pointer" alt='' onClick={() => setLanguage('human')}/>}
-        </div>
+        
       </div>
 
       <ResultsList results={searchResult} loading={loading} />
