@@ -85,5 +85,14 @@ exports.searchItem = async (request) => {
     });
   }
 
+  if (category === 'planets') {
+    await forEachAsync(result.residents, async (residentUrl, index) => {
+      result.residents[index] = (await axios.get(residentUrl)).data;
+    });
+    await forEachAsync(result.films, async (filmUrl, index) => {
+      result.films[index] = (await axios.get(filmUrl)).data;
+    });
+  }
+
   return result;
 }
