@@ -3,7 +3,7 @@ const {searchAllCategories, searchInCategory} = require("./search");
 exports.searchRoutes = [
   {
     method: 'GET',
-    path: '/search/{nameToSearch}',
+    path: '/search/{nameToSearch}/{category?}',
     handler: function (request) {
       return searchAllCategories(request);
     },
