@@ -27,7 +27,6 @@ const start = async () => {
       isSecure: false
     },
     validate: async (request, session) => {
-      console.log(session.id)
       const account = users.find(
         (user) => (user.id === session.id)
       );

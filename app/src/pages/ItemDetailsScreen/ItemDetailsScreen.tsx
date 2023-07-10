@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {searchItem} from "../../actions/searchActions";
 import {useEffect} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {PeopleDetailsCard} from "../../components/PeopleDetailsCard";
 import {PlanetDetailsCard} from "../../components/PlanetDetailsCard";
 import {FilmDetailsCard} from "../../components/FilmDetailsCard";
@@ -21,6 +21,7 @@ const ItemDetailsScreen = (props: Props) => {
   );
   const {id} = useParams();
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const getData = () => {
     const data = {id, category: props.category};
@@ -30,13 +31,11 @@ const ItemDetailsScreen = (props: Props) => {
 
   useEffect(() => {
     getData();
-  }, [])
+  }, [navigate])
 
   return (
     <>
       {error && <h2>{error}</h2>}
-      <h1 className="font-jedi-outlined">{props.category} details</h1>
-
       {props.category === 'people' && !loading && itemDetails && <PeopleDetailsCard person={itemDetails} />}
       {props.category === 'planets' && !loading && itemDetails && <PlanetDetailsCard planet={itemDetails} />}
       {props.category === 'films' && !loading && itemDetails && <FilmDetailsCard film={itemDetails} />}

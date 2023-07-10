@@ -18,6 +18,7 @@ export const loginUser = createAsyncThunk(
         { username, password },
         config
       )
+      localStorage.setItem('username', data.username);
       return data
     } catch (error) {
       // return custom error message from backend if present
@@ -48,6 +49,7 @@ export const logoutUser = createAsyncThunk(
         `${API_BASE_URL}/logout`,
         config
       );
+      localStorage.removeItem('username');
     } catch (error) {
       // return custom error message from backend if present
       // @ts-ignore

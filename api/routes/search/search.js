@@ -1,5 +1,6 @@
 const {apiBaseUrl} = require("../../constants/config");
 const axios = require("axios");
+const {forEachAsync} = require("../../utils/utils");
 
 exports.searchByName = async (request) => {
   const {nameToSearch, category} = request.params;
@@ -69,6 +70,20 @@ exports.searchItem = async (request) => {
   if (!result) {
     throw new Error(`Item with id ${id} cannot be found in ${category}`)
   }
+  result = result.data;
 
-  return result.data;
+  if (category === 'people') {
+    result.homeworld = (await axios.get(result.homeworld)).data
+    await forEachAsync(result.films, async (filmUrl, index) => {
+      result.films[index] = (await axios.get(filmUrl)).data;
+    });
+    await forEachAsync(result.vehicles, async (vehicleUrl, index) => {
+      result.vehicles[index] = (await axios.get(vehicleUrl)).data;
+    });
+    await forEachAsync(result.starships, async (starshipUrl, index) => {
+      result.starships[index] = (await axios.get(starshipUrl)).data;
+    });
+  }
+
+  return result;
 }
