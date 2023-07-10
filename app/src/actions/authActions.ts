@@ -18,6 +18,7 @@ export const loginUser = createAsyncThunk(
         { username, password },
         config
       )
+      localStorage.setItem('username', data.username);
       return data
     } catch (error) {
       // return custom error message from backend if present
@@ -44,10 +45,12 @@ export const logoutUser = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       };
-      await axios.post(
+      await axios.get(
         `${API_BASE_URL}/logout`,
         config
       );
+      localStorage.removeItem('username');
+      window.location.href = '/';
     } catch (error) {
       // return custom error message from backend if present
       // @ts-ignore
