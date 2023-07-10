@@ -2,7 +2,7 @@ const {apiBaseUrl} = require("../../constants/config");
 const axios = require("axios");
 
 exports.searchAllCategories = async (request) => {
-  const {nameToSearch} = request.payload;
+  const {nameToSearch} = request.params;
 
   let [ people, planets, films, species, vehicles, starships ] =  await axios.all([
     axios.get(`${apiBaseUrl}/people/`),

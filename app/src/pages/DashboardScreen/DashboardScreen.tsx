@@ -41,7 +41,7 @@ const DashboardScreen = () => {
         <div style={{marginLeft: '5vw', marginRight: '5vw'}}>
           <div>
             <h1>People</h1>
-            {searchResult.people.length && searchResult.people.map((person: Person, p: Key | null | undefined) => {
+            {searchResult.people?.length && searchResult.people.map((person: Person, p: Key | null | undefined) => {
               return (
                 <div key={p} style={{border: '1px solid black'}}>
                   <p>{person.name}</p>
@@ -54,7 +54,7 @@ const DashboardScreen = () => {
           </div>
           <div>
             <h1>Planets</h1>
-            {searchResult.planets.length && searchResult.planets.map((planet: Planet, p: Key | null | undefined) => {
+            {searchResult.planets?.length && searchResult.planets.map((planet: Planet, p: Key | null | undefined) => {
               return (
                 <div key={p} style={{border: '1px solid black'}}>
                   <p>{planet.name}</p>
@@ -67,7 +67,7 @@ const DashboardScreen = () => {
           </div>
           <div>
             <h1>Films</h1>
-            {searchResult.films.length && searchResult.films.map((film: Film, p: Key | null | undefined) => {
+            {searchResult.films?.length && searchResult.films.map((film: Film, p: Key | null | undefined) => {
               return (
                 <div key={p} style={{border: '1px solid black'}}>
                   <p>{film.title}</p>
@@ -79,7 +79,7 @@ const DashboardScreen = () => {
           </div>
           <div>
             <h1>Species</h1>
-            {searchResult.species.length && searchResult.species.map((specie: Species, p: Key | null | undefined) => {
+            {searchResult.species?.length && searchResult.species.map((specie: Species, p: Key | null | undefined) => {
               return (
                 <div key={p} style={{border: '1px solid black'}}>
                   <p>{specie.name}</p>
@@ -91,7 +91,7 @@ const DashboardScreen = () => {
           </div>
           <div>
             <h1>Vehicles</h1>
-            {searchResult.vehicles.length && searchResult.vehicles.map((vehicle: Vehicle, p: Key | null | undefined) => {
+            {searchResult.vehicles?.length && searchResult.vehicles.map((vehicle: Vehicle, p: Key | null | undefined) => {
               return (
                 <div key={p} style={{border: '1px solid black'}}>
                   <p>{vehicle.name}</p>
@@ -103,7 +103,7 @@ const DashboardScreen = () => {
           </div>
           <div>
             <h1>Starships</h1>
-            {searchResult.starships.length && searchResult.starships.map((starship: Starship, p: Key | null | undefined) => {
+            {searchResult.starships?.length && searchResult.starships.map((starship: Starship, p: Key | null | undefined) => {
               return (
                 <div key={p} style={{border: '1px solid black'}}>
                   <p>{starship.name}</p>

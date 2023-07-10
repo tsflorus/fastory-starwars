@@ -3,26 +3,28 @@ const {searchAllCategories, searchInCategory} = require("./search");
 exports.searchRoutes = [
   {
     method: 'GET',
-    path: '/search/',
+    path: '/search/{nameToSearch}',
     handler: function (request) {
       return searchAllCategories(request);
     },
     options: {
       auth: {
-        mode: 'required'
+        mode: 'optional'
       }
     }
   },
   {
-    method: 'GET',
+    method: 'POST',
     path: '/search/{id}',
     handler: function (request) {
       return searchInCategory(request);
     },
     options: {
       auth: {
-        mode: 'required'
+        mode: 'optional'
       }
     }
   }
 ]
+
+// TODO: Authorization
