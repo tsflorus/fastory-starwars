@@ -4,6 +4,7 @@ import {loginUser} from "../../actions/authActions";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {routes} from "../../constants/routes";
+import {Loader} from "../../components/Loader";
 
 const LoginScreen = () => {
   const { loading, userInfo, error, success } = useSelector(
@@ -25,34 +26,33 @@ const LoginScreen = () => {
   }, [navigate, userInfo, success])
 
   return (
-    <>
-      {error && <h2>{error}</h2>}
-      <h1 className="font-jedi-outlined">Login</h1>
-      <form onSubmit={handleSubmit(submitForm)}>
-        <div className='form-group'>
-          <label htmlFor='username' className="text-yellow font-jedi-outlined">Username</label>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      {error && <h2 className="mb-2 text-center">Doucement jeune Padawan ! Il semblerait qu'une erreur soit survenue ! <br /> {error}</h2>}
+      <h1 className="text-5xl font-jedi-outlined mb-10 text-yellow">Base de données de l'empire</h1>
+      <form className="flex flex-col justify-center w-3/12" onSubmit={handleSubmit(submitForm)}>
           <input
+            placeholder='username'
             type='username'
-            className='border-2 border-yellow bg-black'
+            className='border-white bg-black p-2 font-starJedi rounded'
+            style={{borderWidth: 1}}
             {...register('username')}
             required
           />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password' className="text-yellow font-jedi-outlined">Password</label>
+
           <input
+            placeholder='password'
             type='password'
-            className='border-2 border-yellow bg-black'
+            className='border-white bg-black p-2 font-starJedi rounded mt-5'
+            style={{borderWidth: 1}}
             {...register('password')}
             required
           />
-        </div>
-        <button type='submit' className='button border-2 border-yellow'>
-          Login
+        <button type='submit' className='button border-2 border-yellow mt-10 w-4/12 rounded-2xl mx-auto font-jedi text-yellow p-2'>
+          Entrer
         </button>
       </form>
-      {loading && <h1>Loading</h1>}
-    </>
+      {loading && <Loader />}
+    </div>
   )
 }
 export default LoginScreen
