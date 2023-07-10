@@ -2,6 +2,7 @@ import {Person} from "../../../../data/types";
 import {Key} from "react";
 import {useNavigate} from "react-router-dom";
 import {DotSpinner} from "../../DotSpinner";
+import {Header} from "../Header";
 
 type Props = {
   people: Array<Person | null>,
@@ -18,14 +19,9 @@ const ListPeople = (props: Props) => {
 
   return (
     <div>
-      <div className="flex flex-row justify-between items-center rounded">
-        <h1 className="text-2xl font-starJediOutlined">Personnages</h1>
-        <div className="flex flex-row items-center justify-center rounded-full w-1/12 text-center bg-tattooine font-starJedi">
-          {props.loading ? <DotSpinner /> : (props.people?.length ?? 0)}
-        </div>
-      </div>
+      <Header title='Personnages' loading={props.loading} itemsLength={props.people?.length} color='tattooine' />
       {/*@ts-ignore*/}
-      {props.people?.length && props.people.map((person: Person, p: Key | null | undefined) => {
+      {props.people?.length ? props.people.map((person: Person, p: Key | null | undefined) => {
         return (
           <div
             key={p} onClick={() => goToPage(person.url, 'people')}
@@ -40,7 +36,7 @@ const ListPeople = (props: Props) => {
             </div>
           </div>
         )
-      })}
+      }): ''}
     </div>
   )
 }

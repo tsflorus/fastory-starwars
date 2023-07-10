@@ -2,6 +2,7 @@ import {Species} from "../../../../data/types";
 import {Key} from "react";
 import {useNavigate} from "react-router-dom";
 import {DotSpinner} from "../../DotSpinner";
+import {Header} from "../Header";
 
 type Props = {
   species: Array<Species | null>,
@@ -18,14 +19,9 @@ const ListSpecies = (props: Props) => {
 
   return (
     <div>
-      <div className="flex flex-row justify-between items-center rounded">
-        <h1 className="text-2xl font-starJediOutlined">Espèces</h1>
-        <div className="flex flex-row items-center justify-center rounded-full w-1/12 text-center bg-chewy font-starJedi">
-          {props.loading ? <DotSpinner /> : (props.species?.length ?? 0)}
-        </div>
-      </div>
+      <Header title='Espèces' loading={props.loading} itemsLength={props.species?.length} color='chewy' />
       {/*@ts-ignore*/}
-      {props.species?.length && props.species.map((species: Species, p: Key | null | undefined) => {
+      {props.species?.length ? props.species.map((species: Species, p: Key | null | undefined) => {
         return (
           <div
             key={p} onClick={() => goToPage(species.url, 'species')}
@@ -40,7 +36,7 @@ const ListSpecies = (props: Props) => {
             </div>
           </div>
         )
-      })}
+      }) : ''}
     </div>
   )
 }

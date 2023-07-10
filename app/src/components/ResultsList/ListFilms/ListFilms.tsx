@@ -2,6 +2,7 @@ import {Film} from "../../../../data/types";
 import {Key} from "react";
 import {useNavigate} from "react-router-dom";
 import {DotSpinner} from "../../DotSpinner";
+import {Header} from "../Header";
 
 type Props = {
   films: Array<Film | null>,
@@ -18,14 +19,9 @@ const ListFilms = (props: Props) => {
 
   return (
     <div>
-      <div className="flex flex-row justify-between items-center rounded">
-        <h1 className="text-2xl font-starJediOutlined">Films</h1>
-        <div className="flex flex-row items-center justify-center rounded-full w-1/12 text-center bg-warp-speed font-starJedi">
-          {props.loading ? <DotSpinner /> : (props.films?.length ?? 0)}
-        </div>
-      </div>
+      <Header title='Films' loading={props.loading} itemsLength={props.films?.length} color='warp-speed' />
       {/*@ts-ignore*/}
-      {props.films?.length && props.films.map((film: Film, p: Key | null | undefined) => {
+      {props.films?.length ? props.films.map((film: Film, p: Key | null | undefined) => {
         return (
           <div
             key={p} onClick={() => goToPage(film.url, 'films')}
@@ -40,7 +36,7 @@ const ListFilms = (props: Props) => {
             </div>
           </div>
         )
-      })}
+      }): ''}
     </div>
   )
 }

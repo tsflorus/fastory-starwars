@@ -1,6 +1,4 @@
 import {Film, Person, Planet, Species, Starship, Vehicle} from "../../../data/types";
-import {Key} from "react";
-import {useNavigate} from "react-router-dom";
 import {ListPeople} from "./ListPeople";
 import {ListPlanets} from "./ListPlanets";
 import {ListFilms} from "./ListFilms";
@@ -21,13 +19,6 @@ type Props = {
 }
 
 const ResultsList = (props: Props) => {
-  const navigate = useNavigate();
-
-  const goToPage = async (url: string, category: string) => {
-    let id = url.split('/')[5];
-    await navigate(`/${category}/${id}`)
-  }
-
   return (
     <div className="md:w-8/12 w-full">
       <ListPeople people={props.results.people} loading={props.loading} />

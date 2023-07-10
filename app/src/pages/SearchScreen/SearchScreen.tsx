@@ -1,8 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {searchName} from "../../actions/searchActions";
-import {Film, Person, Planet, Species, Starship, Vehicle} from "../../../data/types";
-import {Key, useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 import human from '../../assets/img/human.png'
 import wookie from '../../assets/img/wookie.png'
 import {ResultsList} from "../../components/ResultsList";

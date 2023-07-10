@@ -2,6 +2,7 @@ import {Starship} from "../../../../data/types";
 import {Key} from "react";
 import {useNavigate} from "react-router-dom";
 import {DotSpinner} from "../../DotSpinner";
+import {Header} from "../Header";
 
 type Props = {
   starships: Array<Starship | null>,
@@ -18,14 +19,9 @@ const ListStarships = (props: Props) => {
 
   return (
     <div>
-      <div className="flex flex-row justify-between items-center rounded">
-        <h1 className="text-2xl font-starJediOutlined">Véhicules</h1>
-        <div className="flex flex-row items-center justify-center rounded-full w-1/12 text-center bg-rebel-red font-starJedi">
-          {props.loading ? <DotSpinner /> : (props.starships?.length ?? 0)}
-        </div>
-      </div>
+      <Header title='Vaisseaux' loading={props.loading} itemsLength={props.starships?.length} color='rebel-red' />
       {/*@ts-ignore*/}
-      {props.starships?.length && props.starships.map((starship: Starship, p: Key | null | undefined) => {
+      {props.starships?.length ? props.starships.map((starship: Starship, p: Key | null | undefined) => {
         return (
           <div
             key={p} onClick={() => goToPage(starship.url, 'starships')}
@@ -40,7 +36,7 @@ const ListStarships = (props: Props) => {
             </div>
           </div>
         )
-      })}
+      }) : ''}
     </div>
   )
 }
