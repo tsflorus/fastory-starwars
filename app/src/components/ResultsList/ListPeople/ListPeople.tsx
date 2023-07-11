@@ -24,14 +24,14 @@ const ListPeople = (props: Props) => {
         return (
           <div
             key={p} onClick={() => goToPage(person.url, 'people')}
-            className="flex flex-row justify-between items-center p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-tattooine">
-            <div className="flex flex-col justify-center">
+            className="flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-tattooine">
+            <div className="flex flex-col justify-center items-center md:items-start">
               <p className="text-xl font-starJedi">{person.name.toLowerCase()}</p>
               <p className="font-starJedi">Naissance: {person.birth_year}</p>
             </div>
             <div>
-              <p className="font-starJedi text-right">Taille: {person.height} cm</p>
-              <p className="font-starJedi text-right">Poids: {person.mass} kg</p>
+              <p className="font-starJedi md:text-right">Taille: {person.height} cm</p>
+              <p className="font-starJedi md:text-right">Poids: {person.mass} kg</p>
             </div>
           </div>
         )

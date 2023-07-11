@@ -24,14 +24,14 @@ const ListPlanets = (props: Props) => {
         return (
           <div
             key={p} onClick={() => goToPage(planet.url, 'planets')}
-            className="flex flex-row justify-between items-center p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-gold">
-            <div className="flex flex-col justify-center">
+            className="flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-gold">
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
               <p className="text-xl font-starJedi">{planet.name.toLowerCase()}</p>
               <p className="font-starJedi">Population: {planet.population}</p>
             </div>
             <div>
-              <p className="font-starJedi text-right">Climat: {planet.climate}</p>
-              <p className="font-starJedi text-right">Terrain: {planet.terrain}</p>
+              <p className="font-starJedi md:text-right text-center">Climat: {planet.climate}</p>
+              <p className="font-starJedi md:text-right text-center">Terrain: {planet.terrain}</p>
             </div>
           </div>
         )
