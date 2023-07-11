@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from '../logo.svg';
-import '../App.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {routes} from "../constants/routes";
+import {LoginScreen} from "./LoginScreen";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import {ItemDetailsScreen} from "./ItemDetailsScreen";
+import {SearchScreen} from "./SearchScreen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id='stars'></div>
+      <div id='stars2'></div>
+      <div id='stars3'></div>
+      <BrowserRouter>
+        <Routes>
+          <Route path={routes.search} element={<ProtectedRoute><SearchScreen /></ProtectedRoute>} />
+          <Route path={routes.login} element={<LoginScreen />} />
+
+          {/*Details routes*/}
+          <Route path={routes.peopleDetails} element={<ProtectedRoute><ItemDetailsScreen category='people' /></ProtectedRoute>} />
+          <Route path={routes.planetDetails} element={<ProtectedRoute><ItemDetailsScreen category='planets' /></ProtectedRoute>} />
+          <Route path={routes.filmDetails} element={<ProtectedRoute><ItemDetailsScreen category='films' /></ProtectedRoute>} />
+          <Route path={routes.speciesDetails} element={<ProtectedRoute><ItemDetailsScreen category='species' /></ProtectedRoute>} />
+          <Route path={routes.vehicleDetails} element={<ProtectedRoute><ItemDetailsScreen category='vehicles' /></ProtectedRoute>} />
+          <Route path={routes.starshipDetails} element={<ProtectedRoute><ItemDetailsScreen category='starships' /></ProtectedRoute>} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
