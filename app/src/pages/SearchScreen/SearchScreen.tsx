@@ -37,17 +37,17 @@ const SearchScreen = () => {
       <div className="flex flex-col justify-center items-center mt-20 w-8/12 mx-auto">
         {error && <h2>{error}</h2>}
         <h1 className="font-jedi-outlined text-4xl text-yellow text-center">Rechercher dans la base de l'empire</h1>
-        <div className="flex flex-row items-center justify-center w-8/12">
+        <div className="flex flex-row items-center justify-center md:w-8/12 w-full">
           <input
             placeholder='Nom à rechercher'
             type='nameToSearch'
-            className='border-white bg-black p-2 font-starJedi rounded w-10/12 text-center my-10'
+            className='border-white bg-black p-2 font-starJedi rounded w-10/12 md:text-center text-left my-10'
             style={{borderWidth: 1}}
             value={searchValue}
             onChange={handleInputChange}
             required
           />
-          <select id="countries" className="bg-black border-2 border-yellow w-2/12 mx-3 p-2 rounded" value={filter}
+          <select id="countries" className="bg-black border-2 border-yellow md:w-2/12 w-6/12 mx-3 p-2 rounded" value={filter}
                   onChange={(e) => setFilter(e.target.value)}>
             <option value="">Tout</option>
             <option value="people">Personnages</option>
@@ -62,8 +62,8 @@ const SearchScreen = () => {
 
         <ResultsList results={searchResult} loading={loading}/>
       </div>
-      <div className="flex flex-row justify-center">
-        <button className='button border-2 border-yellow mt-20 w-1/12 rounded mx-auto font-jedi text-yellow p-2'
+      <div className="flex flex-row justify-center mb-5">
+        <button className='button border-2 border-yellow mt-20 rounded mx-auto font-jedi text-yellow p-2'
           // @ts-ignore
                 onClick={() => dispatch(logoutUser({}))}>
           M'enfuir

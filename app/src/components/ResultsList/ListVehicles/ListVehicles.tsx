@@ -24,14 +24,14 @@ const ListVehicles = (props: Props) => {
         return (
           <div
             key={p} onClick={() => goToPage(vehicle.url, 'vehicles')}
-            className="flex flex-row justify-between items-center p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-luke-lightsaber">
-            <div className="flex flex-col justify-center">
+            className="flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-luke-lightsaber">
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
               <p className="text-xl font-starJedi">{vehicle.name.toLowerCase()}</p>
               <p className="font-starJedi">Classe: {vehicle.vehicle_class}</p>
             </div>
             <div>
-              <p className="font-starJedi text-right">Modèle: {vehicle.model.toLowerCase()}</p>
-              <p className="font-starJedi text-right">Équipage: {vehicle.crew.toLowerCase()}</p>
+              <p className="font-starJedi md:text-right text-center">Modèle: {vehicle.model.toLowerCase()}</p>
+              <p className="font-starJedi md:text-right text-center">Équipage: {vehicle.crew.toLowerCase()}</p>
             </div>
           </div>
         )

@@ -24,14 +24,14 @@ const ListFilms = (props: Props) => {
         return (
           <div
             key={p} onClick={() => goToPage(film.url, 'films')}
-            className="flex flex-row justify-between items-center p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-warp-speed">
-            <div className="flex flex-col justify-center">
+            className="flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-warp-speed">
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
               <p className="text-xl font-starJedi">{film.title.toLowerCase()}</p>
               <p className="font-starJedi">Date de sortie: {film.release_date}</p>
             </div>
             <div>
-              <p className="font-starJedi text-right">Producteurs: {film.producer.toLowerCase()}</p>
-              <p className="font-starJedi text-right">Réalisateur: {film.director.toLowerCase()}</p>
+              <p className="font-starJedi md:text-right text-center">Producteurs: {film.producer.toLowerCase()}</p>
+              <p className="font-starJedi md:text-right text-center">Réalisateur: {film.director.toLowerCase()}</p>
             </div>
           </div>
         )

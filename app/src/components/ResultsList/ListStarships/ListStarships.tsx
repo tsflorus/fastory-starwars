@@ -24,14 +24,14 @@ const ListStarships = (props: Props) => {
         return (
           <div
             key={p} onClick={() => goToPage(starship.url, 'starships')}
-            className="flex flex-row justify-between items-center p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-rebel-red">
-            <div className="flex flex-col justify-center">
+            className="flex md:flex-row flex-col md:justify-between justify-center items-center md:items-start p-2 my-3 rounded-xl hover:cursor-pointer border-2 border-rebel-red">
+            <div className="flex flex-col justify-center items-center md:items-start text-center md:text-left">
               <p className="text-xl font-starJedi">{starship.name.toLowerCase()}</p>
               <p className="font-starJedi">Fabricant: {starship.manufacturer}</p>
             </div>
             <div>
-              <p className="font-starJedi text-right">Modèle: {starship.model.toLowerCase()}</p>
-              <p className="font-starJedi text-right">Passagers: {starship.passengers.toLowerCase()}</p>
+              <p className="font-starJedi md:text-right text-center">Modèle: {starship.model.toLowerCase()}</p>
+              <p className="font-starJedi md:text-right text-center">Passagers: {starship.passengers.toLowerCase()}</p>
             </div>
           </div>
         )

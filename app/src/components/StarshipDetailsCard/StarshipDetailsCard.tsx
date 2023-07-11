@@ -7,8 +7,8 @@ const StarshipDetailsCard = (props) => {
     <div className="my-20">
       {props.starship && (
         <>
-          <h1 className="text-8xl font-starJediOutlined text-rebel-red text-center">{props.starship?.name?.toLowerCase()}</h1>
-          <div className="w-8/12 mx-auto mt-10 bg-[#010101] border-rebel-red border-2 rounded-2xl p-5">
+          <h1 className="md:text-8xl text-5xl font-starJediOutlined text-rebel-red text-center">{props.starship?.name?.toLowerCase()}</h1>
+          <div className="md:w-8/12 w-10/12 mx-auto mt-10 bg-[#010101] border-rebel-red border-2 rounded-2xl p-5">
             <div className="mb-5">
               <h1 className="text-2xl font-starJediOutlined">informations de base</h1>
               <div className="flex flex-row flex-wrap items-center justify-between">

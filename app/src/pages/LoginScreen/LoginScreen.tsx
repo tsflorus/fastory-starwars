@@ -28,8 +28,8 @@ const LoginScreen = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       {error && <h2 className="mb-2 text-center">Doucement jeune Padawan ! Il semblerait qu'une erreur soit survenue ! <br /> {error}</h2>}
-      <h1 className="text-5xl font-jedi-outlined mb-10 text-yellow">Base de données de l'empire</h1>
-      <form className="flex flex-col justify-center w-3/12" onSubmit={handleSubmit(submitForm)}>
+      <h1 className="text-5xl font-jedi-outlined mb-10 text-yellow text-center">Base de données de l'empire</h1>
+      <form className="flex flex-col justify-center md:w-3/12 w-8/12" onSubmit={handleSubmit(submitForm)}>
           <input
             placeholder="Nom d'utilisation"
             type='username'

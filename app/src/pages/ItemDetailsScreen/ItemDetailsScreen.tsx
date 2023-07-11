@@ -47,13 +47,13 @@ const ItemDetailsScreen = (props: Props) => {
 
       {loading && <Loader/>}
 
-      <div className="flex flex-row justify-center">
-        <button className='button border-2 border-yellow mt-20 rounded mx-auto font-jedi text-yellow p-2'
+      <div className="flex md:flex-row flex-col justify-center mt-20 mb-5 gap-10">
+        <button className='button border-2 border-yellow rounded mx-auto font-jedi text-yellow p-2'
           // @ts-ignore
                 onClick={() => navigate(routes.search)}>
           Faire une autre recherche
         </button>
-        <button className='button border-2 border-yellow mt-20 w-1/12 rounded mx-auto font-jedi text-yellow p-2'
+        <button className='button border-2 border-yellow rounded mx-auto font-jedi text-yellow p-2'
           // @ts-ignore
                 onClick={() => dispatch(logoutUser({}))}>
           M'enfuir
