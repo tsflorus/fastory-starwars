@@ -26,5 +26,3 @@ exports.searchRoutes = [
     }
   }
 ]
-
-// TODO: Authorization
