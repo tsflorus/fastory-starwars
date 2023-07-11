@@ -94,7 +94,7 @@ exports.searchItem = async (request) => {
     });
   }
 
-  if (category === 'vehicles') {
+  if (category === 'vehicles' || category === 'starships') {
     await forEachAsync(result.pilots, async (pilotUrl, index) => {
       result.pilots[index] = (await axios.get(pilotUrl)).data;
     });
