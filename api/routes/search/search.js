@@ -113,5 +113,23 @@ exports.searchItem = async (request) => {
     });
   }
 
+  if (category === 'films') {
+    await forEachAsync(result.characters, async (characterUrl, index) => {
+      result.characters[index] = (await axios.get(characterUrl)).data;
+    });
+    await forEachAsync(result.planets, async (planetUrl, index) => {
+      result.planets[index] = (await axios.get(planetUrl)).data;
+    });
+    await forEachAsync(result.vehicles, async (vehicleUrl, index) => {
+      result.vehicles[index] = (await axios.get(vehicleUrl)).data;
+    });
+    await forEachAsync(result.species, async (speciesUrl, index) => {
+      result.species[index] = (await axios.get(speciesUrl)).data;
+    });
+    await forEachAsync(result.starships, async (starshipUrl, index) => {
+      result.starships[index] = (await axios.get(starshipUrl)).data;
+    });
+  }
+
   return result;
 }
