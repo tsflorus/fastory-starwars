@@ -2,7 +2,7 @@
 
 Ce projet permet à l'Alliance Rebelle d'accéder à toutes les données de la base de données de l'empire.
 
-Voici quelques indications pour lancer le projet:
+Voici quelques indications pour lancer le projet :
 
 ## Lancer l'API
 
@@ -18,11 +18,11 @@ Une fois ces deux étapes terminées, vous pouvez enfin lancer l'api avec: `npm 
 ## Lancer l'interface de recherche
 
 Dernière étape, il va maintenant falloir lancer l'interface de recherche.
-Pour cela, rendez-vous dans le dossier associer à l'aide de: `cd app`.
+Pour cela, rendez-vous dans le dossier associer à l'aide de : `cd app`.
 
 Pour installer les dépendences, rentrez la commande: `npm install`.
 
-_Attention: certaines librairies peuvent ne pas être compatibles avec la dernière version de React. Si tel est le cas, remplacez la commande précédente par celle-ci: `npm install --legacy-peer-deps`_.
+_Attention : certaines librairies peuvent ne pas être compatibles avec la dernière version de React. Si tel est le cas, remplacez la commande précédente par celle-ci: `npm install --legacy-peer-deps`_.
 
 Une fois que tout est bon, il est temps de lancer l'interface de recherche !
 
@@ -30,4 +30,4 @@ Une fois que tout est bon, il est temps de lancer l'interface de recherche !
 
 
 
-### Je suis ravi d'avoir pu contribuer à notre combat ! Ensemble nous vaincrons l'Empire.
+### Je suis ravi d'avoir pu contribuer à notre combat ! Ensemble, nous vaincrons l'Empire.
