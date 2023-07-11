@@ -7,8 +7,8 @@ const PlanetDetailsCard = (props) => {
     <div className="my-20">
       {props.planet && (
         <>
-          <h1 className="text-8xl font-starJediOutlined text-gold text-center">{props.planet?.name}</h1>
-          <div className="w-8/12 mx-auto mt-10 bg-[#010101] border-gold border-2 rounded-2xl p-5">
+          <h1 className="md:text-8xl text-5xl font-starJediOutlined text-gold text-center">{props.planet?.name}</h1>
+          <div className="md:w-8/12 w-10/12 mx-auto mt-10 bg-[#010101] border-gold border-2 rounded-2xl p-5">
             <div className="mb-5">
               <h1 className="text-2xl font-starJediOutlined">informations de base</h1>
               <div className="flex flex-row flex-wrap items-center justify-between">
