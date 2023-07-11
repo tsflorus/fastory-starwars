@@ -22,8 +22,6 @@ Pour cela, rendez-vous dans le dossier associer à l'aide de : `cd app`.
 
 Pour installer les dépendences, rentrez la commande: `npm install`.
 
-_Attention : certaines librairies peuvent ne pas être compatibles avec la dernière version de React. Si tel est le cas, remplacez la commande précédente par celle-ci: `npm install --legacy-peer-deps`_.
-
 Une fois que tout est bon, il est temps de lancer l'interface de recherche !
 
 `npm start`

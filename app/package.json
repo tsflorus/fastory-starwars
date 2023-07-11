@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -50,5 +50,10 @@
   "devDependencies": {
     "@types/react-lottie": "^1.2.6",
     "tailwindcss": "^3.3.2"
+  },
+  "overrides":{
+    "react-lottie": {
+      "react": "^0.14.7 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0"
+    }
   }
 }
