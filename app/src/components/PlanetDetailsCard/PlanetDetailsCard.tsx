@@ -1,13 +1,8 @@
-import {Film, Person, Planet, Starship, Vehicle} from "../../../data/types";
-import {useNavigate} from "react-router-dom";
-import {Key} from "react";
+import {FilmsCard} from "../FilmsCard";
+import {PeopleCard} from "../PeopleCard";
 
-type Props = {
-  planet: Planet
-}
 // @ts-ignore
 const PlanetDetailsCard = (props) => {
-  const navigate = useNavigate();
   return (
     <div className="my-20">
       {props.planet && (
@@ -33,37 +28,8 @@ const PlanetDetailsCard = (props) => {
               </div>
             </div>
 
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Habitants</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.planet?.residents?.map((resident: Person, p: Key | null | undefined) => {
-                  return (
-                    <div key={p} className="hover:cursor-pointer border-2 border-tattooine p-2 rounded-2xl"
-                         onClick={() => navigate(`/people/${resident?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {resident.name.toLowerCase()}</p>
-                      <p className="font-starJedi">Genre: {resident.gender}</p>
-                      <p className="font-starJedi">Date de naissance: {resident.birth_year}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Films</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.planet?.films?.map((film: Film, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-warp-speed p-2 rounded-2xl"
-                         onClick={() => navigate(`/films/${film?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {film.title}</p>
-                      <p className="font-starJedi">N°: {film.episode_id}</p>
-                      <p className="font-starJedi">Date de sortie: {film.release_date}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
+            <PeopleCard title="Habitants" people={props.planet?.residents} />
+            <FilmsCard films={props.planet?.films} />
           </div>
         </>
       )}

@@ -1,14 +1,10 @@
-import {Film, Person, Planet, Starship, Vehicle} from "../../../data/types";
-import {useNavigate} from "react-router-dom";
-import {Key} from "react";
-
-type Props = {
-  film: Film
-}
+import {VehiclesCard} from "../VehiclesCard";
+import {StarshipsCard} from "../StarshipsCard";
+import {PeopleCard} from "../PeopleCard";
+import {PlanetsCard} from "../PlanetsCard";
 
 // @ts-ignore
 const FilmDetailsCard = (props) => {
-  const navigate = useNavigate();
   return (
     <div className="my-20">
       {props.film && (
@@ -34,66 +30,10 @@ const FilmDetailsCard = (props) => {
                 <p className="font-starJedi">{props.film?.opening_crawl?.toLowerCase()}</p>
               </div>
             </div>
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Planets</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.film?.planets?.map((planet: Planet, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-gold p-2 rounded-2xl"
-                         onClick={() => navigate(`/planets/${planet?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {planet.name?.toLowerCase()}</p>
-                      <p className="font-starJedi">Population: {planet.population}</p>
-                      <p className="font-starJedi">Climat: {planet.climate}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Personnages</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.film?.characters?.map((character: Person, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-tattooine p-2 rounded-2xl"
-                         onClick={() => navigate(`/people/${character?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {character.name}</p>
-                      <p className="font-starJedi">Genre: {character.gender}</p>
-                      <p className="font-starJedi">Date de naissance: {character.birth_year}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Véhicules</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.film?.vehicles?.map((vehicle: Vehicle, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-luke-lightsaber p-2 rounded-2xl"
-                         onClick={() => navigate(`/vehicles/${vehicle?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {vehicle.name}</p>
-                      <p className="font-starJedi">Modèle: {vehicle.model}</p>
-                      <p className="font-starJedi">Classe: {vehicle.vehicle_class}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Vaisseaux</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.film?.starships?.map((starship: Starship, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-rebel-red p-2 rounded-2xl"
-                         onClick={() => navigate(`/starships/${starship?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {starship.name}</p>
-                      <p className="font-starJedi">Modèle: {starship.model}</p>
-                      <p className="font-starJedi">Classe: {starship.starship_class}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
+            <PlanetsCard planets={props.fil?.characters} />
+            <PeopleCard title="Personnages" people={props.film?.characters} />
+            <VehiclesCard vehicles={props.film?.vehicles} />
+            <StarshipsCard starships={props.film?.starships} />
           </div>
         </>
       )}

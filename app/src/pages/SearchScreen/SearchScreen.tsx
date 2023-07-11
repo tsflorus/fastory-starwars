@@ -1,8 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {searchName} from "../../actions/searchActions";
 import {useEffect, useState} from "react";
-import human from '../../assets/img/human.png'
-import wookie from '../../assets/img/wookie.png'
 import {ResultsList} from "../../components/ResultsList";
 import {logoutUser} from "../../actions/authActions";
 

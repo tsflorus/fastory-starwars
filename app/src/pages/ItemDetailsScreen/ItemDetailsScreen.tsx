@@ -10,6 +10,7 @@ import {VehicleDetailsCard} from "../../components/VehicleDetailsCard";
 import {StarshipDetailsCard} from "../../components/StarshipDetailsCard";
 import {Loader} from "../../components/Loader";
 import {logoutUser} from "../../actions/authActions";
+import {routes} from "../../constants/routes";
 
 type Props = {
   category: string
@@ -47,6 +48,11 @@ const ItemDetailsScreen = (props: Props) => {
       {loading && <Loader/>}
 
       <div className="flex flex-row justify-center">
+        <button className='button border-2 border-yellow mt-20 rounded mx-auto font-jedi text-yellow p-2'
+          // @ts-ignore
+                onClick={() => navigate(routes.search)}>
+          Faire une autre recherche
+        </button>
         <button className='button border-2 border-yellow mt-20 w-1/12 rounded mx-auto font-jedi text-yellow p-2'
           // @ts-ignore
                 onClick={() => dispatch(logoutUser({}))}>

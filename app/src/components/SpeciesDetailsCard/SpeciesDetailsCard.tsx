@@ -1,10 +1,6 @@
-import {Film, Person, Species} from "../../../data/types";
 import {useNavigate} from "react-router-dom";
-import {Key} from "react";
-
-type Props = {
-  species: Species
-}
+import {FilmsCard} from "../FilmsCard";
+import {PeopleCard} from "../PeopleCard";
 
 // @ts-ignore
 const SpeciesDetailsCard = (props) => {
@@ -41,34 +37,8 @@ const SpeciesDetailsCard = (props) => {
                 </div>
               </div>
             </div>
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Personnages</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.species?.people?.map((person: Person, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-tattooine p-2 rounded-2xl" onClick={() => navigate(`/people/${person?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {person.name}</p>
-                      <p className="font-starJedi">Genre: {person.gender}</p>
-                      <p className="font-starJedi">Date de naissance: {person.birth_year}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-            <div className="mb-5">
-              <h1 className="text-2xl font-starJediOutlined">Films</h1>
-              <div className="flex flex-row flex-wrap items-center gap-10 mt-2">
-                {props.species?.films?.map((film: Film, v: Key | null | undefined) => {
-                  return (
-                    <div key={v} className="hover:cursor-pointer border-2 border-warp-speed p-2 rounded-2xl" onClick={() => navigate(`/films/${film?.url.split('/')[5]}`)}>
-                      <p className="font-starJedi">Nom: {film.title}</p>
-                      <p className="font-starJedi">N°: {film.episode_id}</p>
-                      <p className="font-starJedi">Date de sortie: {film.release_date}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
+            <PeopleCard title="Personnages" people={props.species?.people} />
+            <FilmsCard films={props.species?.films} />
           </div>
         </>
       )}
